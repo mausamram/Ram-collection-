@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <title>RAM FASHION — Modern essentials</title>
+  <meta name="description" content="Discover modern fashion at RAM FASHION. Shop clothing, footwear and accessories.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="announcement">COMPLIMENTARY SHIPPING ON ORDERS ABOVE ₹1,999</div>
+  <header class="header">
+    <a class="brand" href="#">RAM<span>FASHION</span></a>
+    <nav><a href="#shop">Shop</a><a href="#collections">Collections</a><a href="#about">Our story</a></nav>
+    <button class="cart-button" id="openCart" aria-label="Open shopping bag">BAG <b id="cartCount">0</b></button>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">THE NEW SEASON / 2026</p>
+        <h1>Style that<br><em>speaks</em> quietly.</h1>
+        <p class="hero-sub">Thoughtful everyday fashion. Clean silhouettes. A little more you.</p>
+        <a class="button light" href="#shop">EXPLORE THE EDIT <span>↗</span></a>
+      </div>
+      <div class="hero-image" role="img" aria-label="Minimal fashion editorial"></div>
+      <div class="hero-index">01 — 03</div>
+    </section>
+    <section class="ticker"><span>LESS, BUT BETTER</span><i>✳</i><span>EVERYDAY LUXURY</span><i>✳</i><span>MADE FOR YOUR MOMENT</span></section>
+    <section id="collections" class="collections section">
+      <div class="section-head"><div><p class="eyebrow">CURATED FOR YOU</p><h2>Find your <em>look.</em></h2></div><p>Pieces to build a wardrobe<br>that feels like your own.</p></div>
+      <div class="collection-grid">
+        <a class="collection-card men" href="#shop" data-filter="Men"><span>01 / MEN</span><b>Modern<br>uniforms</b><i>SHOP NOW ↗</i></a>
+        <a class="collection-card women" href="#shop" data-filter="Women"><span>02 / WOMEN</span><b>Everyday<br>expression</b><i>SHOP NOW ↗</i></a>
+        <a class="collection-card accessories" href="#shop" data-filter="Accessories"><span>03 / ACCESSORIES</span><b>The final<br>details</b><i>SHOP NOW ↗</i></a>
+      </div>
+    </section>
+    <section id="shop" class="section shop">
+      <div class="section-head"><div><p class="eyebrow">THE RAM EDIT</p><h2>Selected <em>pieces.</em></h2></div><p>Easy to wear. Hard to forget.</p></div>
+      <div class="filters" id="filters">
+        <button class="filter active" data-filter="All">ALL</button><button class="filter" data-filter="Men">MEN</button><button class="filter" data-filter="Women">WOMEN</button><button class="filter" data-filter="Footwear">FOOTWEAR</button><button class="filter" data-filter="Accessories">ACCESSORIES</button>
+      </div>
+      <div class="product-grid" id="products"></div>
+    </section>
+    <section class="statement" id="about"><p class="eyebrow">A NOTE FROM RAM FASHION</p><h2>Good style isn't loud.<br><em>It's unmistakable.</em></h2><p>We believe in versatile pieces, confident choices and getting dressed for yourself.</p></section>
+    <section class="newsletter"><div><p class="eyebrow">STAY IN THE LOOP</p><h2>A little style<br>in your inbox.</h2></div><form id="newsletterForm"><input type="email" placeholder="Your email address" required><button class="button dark" type="submit">SUBSCRIBE ↗</button></form></section>
+  </main>
+  <footer><a class="brand" href="#">RAM<span>FASHION</span></a><p>MODERN STYLE. EVERYDAY CONFIDENCE.</p><small>© 2026 RAM FASHION. ALL RIGHTS RESERVED.</small></footer>
+  <div class="scrim" id="scrim"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag">
+    <div class="drawer-head"><h2>Your bag <span id="drawerCount">(0)</span></h2><button id="closeCart" aria-label="Close bag">✕</button></div>
+    <div id="cartItems" class="cart-items"><p class="empty">Your bag is waiting for something good.</p></div>
+    <div class="cart-bottom"><div class="total"><span>Subtotal</span><b id="subtotal">₹0</b></div><p class="small">Shipping and final payment details confirmed when you order.</p><button id="checkout" class="button dark full">ORDER ON WHATSAPP ↗</button><p class="small">Payment options: UPI / bank transfer / cash on delivery, subject to confirmation.</p></div>
+  </aside>
+  <script src="script.js"></script>
+</body></html>
