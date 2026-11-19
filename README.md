@@ -10,4 +10,4 @@ A responsive static storefront for GitHub Pages.
 5. After deployment, the site URL will be `https://mausamram.github.io/ram-fashion/`.
 
 ## Before accepting real payments
-This is a front-end storefront demo. WhatsApp ordering works as a contact handoff, but no orders or payments are stored or processed by this static site. Connect a trusted payment provider and secure backend before taking live payments. Replace sample product names, photos, prices, and policies with your actual catalogue. Check the WhatsApp contact number in `script.js` before launch.
+This is a front-end storefront demo. WhatsApp ordering works as a contact handoff, but no orders or payments are stored or processed by this static site. Connect a trusted payment provider and secure backend before taking live payments. Replace sample product names, photos, prices, and policies with your actual catalogue. Check the WhatsApp contact number in `8208270317` before launch.
