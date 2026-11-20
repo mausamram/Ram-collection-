@@ -1,57 +1,102 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#090909">
-  <title>RAM FASHION — Modern essentials</title>
-  <meta name="description" content="Discover modern fashion at RAM FASHION. Shop clothing, footwear and accessories.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ram.collection — contemporary fashion, thoughtfully selected.">
+<title>Ram.collection | Wear Your Story</title>
+<style>
+:root{--ink:#20211d;--muted:#77786f;--cream:#f5f1e9;--paper:#fbfaf7;--olive:#687052;--line:#e5e0d6}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}.announcement{background:var(--ink);color:#fff;text-align:center;padding:10px;font-size:11px;letter-spacing:2px;text-transform:uppercase}
+header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;border-bottom:1px solid var(--line);background:#fbfaf7;position:sticky;top:0;z-index:5}
+.logo{font-family:Georgia,serif;font-size:25px;letter-spacing:-1px}.logo span{color:var(--olive)}nav{display:flex;gap:28px;font-size:12px;letter-spacing:1.2px;text-transform:uppercase}nav a:hover{color:var(--olive)}.header-actions{display:flex;gap:18px;align-items:center;font-size:13px}.cart-btn{border:1px solid var(--ink);background:transparent;padding:10px 14px;font-size:11px;letter-spacing:1px}
+.hero{min-height:570px;display:grid;grid-template-columns:1fr 1fr;background:#e8e3d9}.hero-copy{padding:90px 9%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--olive);font-weight:bold}.hero h1{font:normal clamp(48px,6vw,82px)/.98 Georgia,serif;letter-spacing:-3px;margin:22px 0}.hero p{color:#62645b;line-height:1.8;max-width:390px;font-size:14px}.primary{display:inline-block;background:var(--ink);color:white;padding:16px 25px;font-size:11px;letter-spacing:1.7px;text-transform:uppercase;border:0;margin-top:20px}.primary:hover{background:var(--olive)}.hero-image{min-height:570px;background:linear-gradient(0deg,#24251b20,#24251b00),url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1400&q=85') center/cover}
+.section{padding:82px 6%}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:30px}.section h2{font:normal clamp(32px,4vw,48px) Georgia,serif;margin:10px 0}.sub{color:var(--muted);font-size:13px;line-height:1.7}.filters{display:flex;gap:9px;flex-wrap:wrap;margin:25px 0 30px}.filter{border:1px solid var(--line);background:transparent;padding:10px 17px;font-size:10px;letter-spacing:1px;text-transform:uppercase}.filter.active,.filter:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}.product{min-width:0}.photo{height:330px;position:relative;overflow:hidden;background:#eee9df}.photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.product:hover .photo img{transform:scale(1.04)}.tag{position:absolute;top:13px;left:13px;background:#fbfaf7;padding:7px 9px;font-size:9px;letter-spacing:1px;text-transform:uppercase}.product-info{padding:14px 2px}.product-info h3{font-size:13px;font-weight:normal;margin:0 0 8px}.price{font-size:13px}.old{color:#999;text-decoration:line-through;margin-left:8px;font-size:11px}.add{width:100%;margin-top:12px;padding:12px;border:1px solid var(--ink);background:transparent;text-transform:uppercase;font-size:10px;letter-spacing:1.3px}.add:hover{background:var(--ink);color:white}
+.promo{margin:0 6% 75px;background:#dfe0d3;padding:55px 7%;display:flex;justify-content:space-between;align-items:center;gap:20px}.promo h2{font:normal 42px Georgia,serif;margin:10px 0}.promo p{color:#62645b;font-size:13px}.promo .primary{margin-top:5px}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:7%;align-items:center;background:var(--cream)}.story-img{height:430px;background:url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1100&q=85') center/cover}.story-copy{max-width:470px}.story-copy h2{font:normal 48px/1.05 Georgia,serif}.story-copy p{color:var(--muted);font-size:14px;line-height:1.9}
+footer{background:#20211d;color:#f7f4ed;padding:55px 6% 25px}.footer-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}.footer-top p{color:#b9baae;font-size:12px;line-height:1.8}.footer-links{display:flex;gap:22px;font-size:11px;text-transform:uppercase;letter-spacing:1px}.copyright{border-top:1px solid #45463e;margin-top:40px;padding-top:20px;color:#a8a99e;font-size:10px;letter-spacing:1px}
+.overlay{position:fixed;inset:0;background:#0007;z-index:9;display:none}.overlay.show{display:block}.cart-panel{position:fixed;right:0;top:0;height:100%;width:min(420px,100%);background:var(--paper);z-index:10;padding:25px;transform:translateX(105%);transition:.3s;display:flex;flex-direction:column}.cart-panel.show{transform:translateX(0)}.cart-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:18px}.cart-head h2{font:normal 28px Georgia,serif}.close{border:0;background:none;font-size:25px}.cart-items{flex:1;overflow:auto}.cart-item{display:flex;gap:14px;padding:17px 0;border-bottom:1px solid var(--line)}.cart-item img{width:75px;height:95px;object-fit:cover}.cart-item h4{margin:4px 0 8px;font-size:13px;font-weight:normal}.cart-item small{color:var(--muted)}.remove{border:0;background:none;text-decoration:underline;font-size:11px;margin-top:10px;padding:0}.cart-bottom{border-top:1px solid var(--line);padding-top:18px}.total{display:flex;justify-content:space-between;font-size:14px}.checkout{width:100%;margin-top:15px}.empty{color:var(--muted);font-size:13px;padding:30px 0}.payment-methods{margin-top:18px}.payment-label{font-size:9px;letter-spacing:1.5px;color:var(--muted);margin-bottom:9px}.payment-options{display:flex;gap:6px;flex-wrap:wrap}.payment-options span{border:1px solid var(--line);padding:8px 9px;font-size:10px;background:#fff}.notice{font-size:11px;color:var(--muted);line-height:1.6;margin-top:12px}
+@media(max-width:900px){.products{grid-template-columns:repeat(2,1fr)}.photo{height:300px}.hero-copy{padding:60px 8%}.story{gap:30px}.story-copy h2{font-size:38px}}
+@media(max-width:620px){header{height:65px;padding:0 5%}nav{display:none}.logo{font-size:22px}.hero{grid-template-columns:1fr}.hero-copy{padding:65px 7%}.hero-image{min-height:360px}.section{padding:60px 5%}.products{gap:18px 12px}.photo{height:230px}.product-info h3{font-size:12px}.promo{margin:0 5% 55px;padding:35px 7%;display:block}.promo h2{font-size:35px}.story{grid-template-columns:1fr;padding-top:0}.story-img{height:330px}.story-copy{padding:0 5% 15px}.section-head{display:block}.footer-links{flex-wrap:wrap}}
+</style>
 </head>
 <body>
-  <div class="announcement">COMPLIMENTARY SHIPPING ON ORDERS ABOVE ₹1,999</div>
-  <header class="header">
-    <a class="brand" href="#">RAM<span>FASHION</span></a>
-    <nav><a href="#shop">Shop</a><a href="#collections">Collections</a><a href="#about">Our story</a></nav>
-    <button class="cart-button" id="openCart" aria-label="Open shopping bag">BAG <b id="cartCount">0</b></button>
-  </header>
-  <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">THE NEW SEASON / 2026</p>
-        <h1>Style that<br><em>speaks</em> quietly.</h1>
-        <p class="hero-sub">Thoughtful everyday fashion. Clean silhouettes. A little more you.</p>
-        <a class="button light" href="#shop">EXPLORE THE EDIT <span>↗</span></a>
-      </div>
-      <div class="hero-image" role="img" aria-label="Minimal fashion editorial"></div>
-      <div class="hero-index">01 — 03</div>
-    </section>
-    <section class="ticker"><span>LESS, BUT BETTER</span><i>✳</i><span>EVERYDAY LUXURY</span><i>✳</i><span>MADE FOR YOUR MOMENT</span></section>
-    <section id="collections" class="collections section">
-      <div class="section-head"><div><p class="eyebrow">CURATED FOR YOU</p><h2>Find your <em>look.</em></h2></div><p>Pieces to build a wardrobe<br>that feels like your own.</p></div>
-      <div class="collection-grid">
-        <a class="collection-card men" href="#shop" data-filter="Men"><span>01 / MEN</span><b>Modern<br>uniforms</b><i>SHOP NOW ↗</i></a>
-        <a class="collection-card women" href="#shop" data-filter="Women"><span>02 / WOMEN</span><b>Everyday<br>expression</b><i>SHOP NOW ↗</i></a>
-        <a class="collection-card accessories" href="#shop" data-filter="Accessories"><span>03 / ACCESSORIES</span><b>The final<br>details</b><i>SHOP NOW ↗</i></a>
-      </div>
-    </section>
-    <section id="shop" class="section shop">
-      <div class="section-head"><div><p class="eyebrow">THE RAM EDIT</p><h2>Selected <em>pieces.</em></h2></div><p>Easy to wear. Hard to forget.</p></div>
-      <div class="filters" id="filters">
-        <button class="filter active" data-filter="All">ALL</button><button class="filter" data-filter="Men">MEN</button><button class="filter" data-filter="Women">WOMEN</button><button class="filter" data-filter="Footwear">FOOTWEAR</button><button class="filter" data-filter="Accessories">ACCESSORIES</button>
-      </div>
-      <div class="product-grid" id="products"></div>
-    </section>
-    <section class="statement" id="about"><p class="eyebrow">A NOTE FROM RAM FASHION</p><h2>Good style isn't loud.<br><em>It's unmistakable.</em></h2><p>We believe in versatile pieces, confident choices and getting dressed for yourself.</p></section>
-    <section class="newsletter"><div><p class="eyebrow">STAY IN THE LOOP</p><h2>A little style<br>in your inbox.</h2></div><form id="newsletterForm"><input type="email" placeholder="Your email address" required><button class="button dark" type="submit">SUBSCRIBE ↗</button></form></section>
-  </main>
-  <footer><a class="brand" href="#">RAM<span>FASHION</span></a><p>MODERN STYLE. EVERYDAY CONFIDENCE.</p><small>© 2026 RAM FASHION. ALL RIGHTS RESERVED.</small></footer>
-  <div class="scrim" id="scrim"></div>
-  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag">
-    <div class="drawer-head"><h2>Your bag <span id="drawerCount">(0)</span></h2><button id="closeCart" aria-label="Close bag">✕</button></div>
-    <div id="cartItems" class="cart-items"><p class="empty">Your bag is waiting for something good.</p></div>
-    <div class="cart-bottom"><div class="total"><span>Subtotal</span><b id="subtotal">₹0</b></div><p class="small">Shipping and final payment details confirmed when you order.</p><button id="checkout" class="button dark full">ORDER ON WHATSAPP ↗</button><p class="small">Payment options: UPI / bank transfer / cash on delivery, subject to confirmation.</p></div>
-  </aside>
-  <script src="script.js"></script>
+<div class="announcement">A little something special — enjoy 10% off your first order</div>
+<header>
+<a class="logo" href="#">Ram<span>.</span>collection</a>
+<nav><a href="#shop">Shop</a><a href="#sale">Sale</a><a href="#story">Our Story</a></nav>
+<div class="header-actions"><a href="#shop">Explore</a><button class="cart-btn" id="openCart">BAG (<span id="cartCount">0</span>)</button></div>
+</header>
+<main>
+<section class="hero">
+<div class="hero-copy"><div class="eyebrow">The new season edit</div><h1>Wear your<br>own story.</h1><p>Thoughtful essentials, effortless silhouettes and everyday pieces made to move with you. Discover a fresh perspective on modern dressing.</p><a class="primary" href="#shop">Shop the collection</a></div>
+<div class="hero-image" role="img" aria-label="Contemporary fashion editorial"></div>
+</section>
+<section class="section" id="shop">
+<div class="section-head"><div><div class="eyebrow">Curated for you</div><h2>Latest collection</h2><div class="sub">Easy pieces. Elevated everyday style.</div></div><div class="sub">Designed to be worn on repeat.</div></div>
+<div class="filters"><button class="filter active" data-filter="all">All pieces</button><button class="filter" data-filter="men">Men</button><button class="filter" data-filter="women">Women</button><button class="filter" data-filter="kids">Kids</button><button class="filter" data-filter="footwear">Footwear</button><button class="filter" data-filter="accessories">Accessories</button><button class="filter" data-filter="sale">On sale</button></div>
+<div class="products" id="products"></div>
+</section>
+<section class="promo" id="sale"><div><div class="eyebrow">A good time to refresh</div><h2>The Sale Edit</h2><p>Selected favourites, now at special prices.</p></div><a class="primary" href="#shop" onclick="setTimeout(()=>filterProducts('sale'),50)">Shop sale</a></section>
+<section class="section story" id="story"><div class="story-img"></div><div class="story-copy"><div class="eyebrow">A little about us</div><h2>Style that feels like you.</h2><p>Ram.collection is built around the idea that getting dressed should feel effortless. We bring together versatile silhouettes, considered details and pieces that fit naturally into your everyday life.</p><a class="primary" href="#shop">Find your favourites</a></div></section>
+</main>
+<footer><div class="footer-top"><div><a class="logo" href="#">Ram<span>.</span>collection</a><p>Everyday pieces. A little more considered.<br>Made for your own kind of style.</p></div><div class="footer-links"><a href="#shop">Shop</a><a href="#sale">Sale</a><a href="mailto:hello@ramcollection.example">Contact</a></div></div><div class="copyright">© 2026 RAM.COLLECTION · DEMO STORE</div></footer>
+<div class="overlay" id="overlay"></div><aside class="cart-panel" id="cartPanel"><div class="cart-head"><h2>Your bag</h2><button class="close" id="closeCart" aria-label="Close cart">×</button></div><div class="cart-items" id="cartItems"></div><div class="cart-bottom"><div class="total"><span>Subtotal</span><strong id="subtotal">₹0</strong></div><div class="payment-methods"><div class="payment-label">PAY SECURELY WITH</div><div class="payment-options"><span>UPI</span><span>Debit / Credit Card</span><span>Net Banking</span></div></div><button class="primary checkout" id="checkout">Pay securely with Razorpay</button><div class="notice" id="paymentNotice">Secure Razorpay checkout will open when the store's server is configured. Payment methods shown depend on your merchant account settings.</div></div></aside>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+const products=[
+{id:1,name:"Everyday Oversized Tee",category:"men",price:799,old:999,sale:true,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85"},
+{id:2,name:"Relaxed Linen Shirt",category:"men",price:1299,old:1599,sale:true,img:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=700&q=85"},
+{id:3,name:"Classic Denim Jeans",category:"women",price:1499,old:1799,sale:true,img:"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=700&q=85"},
+{id:4,name:"Minimal Everyday Dress",category:"women",price:1799,old:2199,sale:true,img:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=85"},
+{id:5,name:"Essential Cotton Shirt",category:"men",price:1099,old:1099,sale:false,img:"https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?auto=format&fit=crop&w=700&q=85"},
+{id:6,name:"Soft Knit Top",category:"women",price:999,old:1299,sale:true,img:"https://images.unsplash.com/photo-1566206091558-7f218b696731?auto=format&fit=crop&w=700&q=85"},
+{id:7,name:"Weekend Hoodie",category:"men",price:1399,old:1699,sale:true,img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=700&q=85"},
+{id:8,name:"Wide-Leg Trousers",category:"women",price:1599,old:1599,sale:false,img:"https://images.unsplash.com/photo-1509937404950-9b5e4a1d1b1c?auto=format&fit=crop&w=700&q=85"},
+{id:9,name:"Classic Denim Jacket",category:"men",price:1999,old:2499,sale:true,img:"https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=700&q=85"},
+{id:10,name:"Printed Summer Kurta",category:"women",price:1199,old:1499,sale:true,img:"https://images.unsplash.com/photo-1583391733956-6c78276477e8?auto=format&fit=crop&w=700&q=85"},
+{id:11,name:"Kids Everyday T-Shirt",category:"kids",price:399,old:499,sale:true,img:"https://images.unsplash.com/photo-1519238263530-99dejf3f1c0f?auto=format&fit=crop&w=700&q=85"},
+{id:12,name:"Kids Casual Set",category:"kids",price:799,old:999,sale:true,img:"https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=700&q=85"},
+{id:13,name:"Everyday Sneakers",category:"footwear",price:1899,old:2199,sale:true,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85"},
+{id:14,name:"Classic Casual Shoes",category:"footwear",price:1699,old:1699,sale:false,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85"},
+{id:15,name:"Minimal Everyday Tote",category:"accessories",price:699,old:899,sale:true,img:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=85"},
+{id:16,name:"Classic Sunglasses",category:"accessories",price:599,old:799,sale:true,img:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=85"}
+];
+let cart=JSON.parse(localStorage.getItem("ramCart")||"[]");
+const money=n=>"₹"+n.toLocaleString("en-IN");
+function renderProducts(list=products){document.getElementById("products").innerHTML=list.map(p=>`<article class="product"><div class="photo"><img src="${p.img}" alt="${p.name}" loading="lazy">${p.sale?'<span class="tag">Special price</span>':''}</div><div class="product-info"><h3>${p.name}</h3><div class="price">${money(p.price)} ${p.sale?`<span class="old">${money(p.old)}</span>`:""}</div><button class="add" onclick="addToCart(${p.id})">Add to bag</button></div></article>`).join("")}
+function filterProducts(filter){document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.filter===filter));renderProducts(filter==="all"?products:filter==="sale"?products.filter(p=>p.sale):products.filter(p=>p.category===filter))}
+document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>filterProducts(b.dataset.filter)));
+function addToCart(id){const item=cart.find(x=>x.id===id);item?item.qty++:cart.push({id,qty:1});saveCart();openCart()}
+function saveCart(){localStorage.setItem("ramCart",JSON.stringify(cart));document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);renderCart()}
+function renderCart(){const el=document.getElementById("cartItems");if(!cart.length){el.innerHTML='<p class="empty">Your bag is waiting for something lovely.</p>';document.getElementById("subtotal").textContent=money(0);return}el.innerHTML=cart.map(x=>{const p=products.find(p=>p.id===x.id);return `<div class="cart-item"><img src="${p.img}" alt=""><div><h4>${p.name}</h4><small>${money(p.price)} × ${x.qty}</small><br><button class="remove" onclick="removeItem(${p.id})">Remove</button></div></div>`}).join("");document.getElementById("subtotal").textContent=money(cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0))}
+function removeItem(id){cart=cart.filter(x=>x.id!==id);saveCart()}
+function openCart(){document.getElementById("cartPanel").classList.add("show");document.getElementById("overlay").classList.add("show")}
+function closeCart(){document.getElementById("cartPanel").classList.remove("show");document.getElementById("overlay").classList.remove("show")}
+document.getElementById("openCart").onclick=openCart;document.getElementById("closeCart").onclick=closeCart;document.getElementById("overlay").onclick=closeCart;
+document.getElementById("checkout").onclick=async()=>{
+  if(!cart.length){alert("Your bag is empty.");return;}
+  const btn=document.getElementById("checkout"), notice=document.getElementById("paymentNotice");
+  btn.disabled=true;btn.textContent="Opening secure checkout…";
+  try{
+    const orderRes=await fetch("/api/create-order",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({items:cart.map(x=>({id:x.id,qty:x.qty}))})});
+    if(!orderRes.ok) throw new Error("Payment server is not configured yet. Please try again later.");
+    const order=await orderRes.json();
+    const options={key:order.keyId,amount:order.amount,currency:order.currency, name:"Ram.collection",description:"Fashion order",order_id:order.id,
+      handler:async function(response){
+        const verify=await fetch("/api/verify-payment",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(response)});
+        const result=await verify.json();
+        if(!verify.ok||!result.verified){alert("Payment could not be verified. Please contact the store before retrying.");return;}
+        cart=[];saveCart();closeCart();alert("Payment verified! Your order reference: "+order.id);
+      },
+      theme:{color:"#687052"},modal:{ondismiss:function(){btn.disabled=false;btn.textContent="Pay securely with Razorpay";}}
+    };
+    const rzp=new Razorpay(options);rzp.on("payment.failed",function(){alert("Payment failed. You can try again.");});rzp.open();
+  }catch(err){notice.textContent=err.message;alert(err.message);}
+  finally{btn.disabled=false;btn.textContent="Pay securely with Razorpay";}
+};
+renderProducts();saveCart();
+</script>
 </body></html>
