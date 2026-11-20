@@ -2,6 +2,7 @@ const express = require('express');
 const Razorpay = require('razorpay');
 const crypto = require('crypto');
 const path = require('path');
+const fs = require('fs');
 require('dotenv').config();
 
 const app = express();
@@ -21,10 +22,54 @@ const catalogue = {
   13: 1899, 14: 1699, 15: 699, 16: 599
 };
 
+
+app.post('/api/create-cod-order', (req, res) => {
+  try {
+    const items = req.body.items;
+    const customer = req.body.customer || {};
+    const name = String(customer.name || '').trim();
+    const phone = String(customer.phone || '').trim();
+    const address = String(customer.address || '').trim();
+    if (name.length < 2 || name.length > 80 || !/^[6-9]\d{9}$/.test(phone) || address.length < 10 || address.length > 250) {
+      return res.status(400).json({ error: 'Please provide a valid name, 10-digit Indian mobile number and complete delivery address.' });
+    }
+    if (!Array.isArray(items) || !items.length) return res.status(400).json({ error: 'Cart is empty.' });
+    let totalRupees = 0;
+    const safeItems = [];
+    for (const item of items) {
+      const price = catalogue[item.id], qty = Number(item.qty);
+      if (!price || !Number.isInteger(qty) || qty < 1 || qty > 10) return res.status(400).json({ error: 'Invalid cart item.' });
+      totalRupees += price * qty;
+      safeItems.push({ id: Number(item.id), qty, unitPrice: price });
+    }
+    if (totalRupees < 1 || totalRupees > 100000) return res.status(400).json({ error: 'Order amount is outside the allowed range.' });
+    const orderId = `RAM-COD-${Date.now()}`;
+    const record = { orderId, paymentMethod: 'COD', paymentStatus: 'Pending - Cash on Delivery',
+      customer: { name, phone, address }, items: safeItems, totalRupees, createdAt: new Date().toISOString() };
+    const file = path.join(__dirname, 'orders.json');
+    let orders = [];
+    try { orders = JSON.parse(fs.readFileSync(file, 'utf8')); } catch (_) {}
+    if (!Array.isArray(orders)) orders = [];
+    orders.push(record);
+    fs.writeFileSync(file, JSON.stringify(orders, null, 2), { mode: 0o600 });
+    res.status(201).json({ orderId, totalRupees });
+  } catch (error) {
+    console.error('COD order creation failed:', error.message);
+    res.status(500).json({ error: 'Could not place COD order.' });
+  }
+});
+
 app.post('/api/create-order', async (req, res) => {
   try {
     if (!razorpay) return res.status(503).json({ error: 'Payment gateway is not configured.' });
     const items = req.body.items;
+    const customer = req.body.customer || {};
+    const name = String(customer.name || '').trim();
+    const phone = String(customer.phone || '').trim();
+    const address = String(customer.address || '').trim();
+    if (name.length < 2 || name.length > 80 || !/^[6-9]\d{9}$/.test(phone) || address.length < 10 || address.length > 250) {
+      return res.status(400).json({ error: 'Please provide a valid name, 10-digit Indian mobile number and complete delivery address.' });
+    }
     if (!Array.isArray(items) || !items.length) return res.status(400).json({ error: 'Cart is empty.' });
     let totalRupees = 0;
     for (const item of items) {
@@ -40,7 +85,7 @@ app.post('/api/create-order', async (req, res) => {
       amount: totalRupees * 100,
       currency: 'INR',
       receipt: `ram_${Date.now()}`,
-      notes: { store: 'Ram.collection' }
+      notes: { store: 'Ram.collection', customer_name: name, customer_phone: phone, delivery_address: address }
     });
     res.json({ id: order.id, amount: order.amount, currency: order.currency, keyId: RAZORPAY_KEY_ID });
   } catch (error) {
