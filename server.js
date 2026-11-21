@@ -16,12 +16,16 @@ const razorpay = RAZORPAY_KEY_ID && RAZORPAY_KEY_SECRET
 
 // Keep this catalogue on the server. Never trust prices sent by the browser.
 const catalogue = {
+  const catalogue = {
   1: 799, 2: 1299, 3: 1499, 4: 1799,
   5: 1099, 6: 999, 7: 1399, 8: 1599,
   9: 1999, 10: 1199, 11: 399, 12: 799,
-  13: 1899, 14: 1699, 15: 699, 16: 599
+  13: 1899, 14: 1699, 15: 699, 16: 599,
+  17: 899, 18: 1499, 19: 1599, 20: 1199,
+  21: 1299, 22: 1899, 23: 1099, 24: 1999,
+  25: 1599, 26: 999, 27: 1199, 28: 1499,
+  29: 499, 30: 499, 31: 699
 };
-
 
 app.post('/api/create-cod-order', (req, res) => {
   try {
