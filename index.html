@@ -127,6 +127,36 @@ document.getElementById("checkout").onclick=async()=>{
   }catch(err){notice.textContent=err.message;alert(err.message);}
   finally{btn.disabled=false;btn.textContent="Continue";}
 };
-renderProducts();saveCart();
+async function loadProducts() {
+  const productGrid = document.getElementById("products");
+
+  try {
+    const response = await fetch("./products.json");
+
+    if (!response.ok) {
+      throw new Error("Products file load nahi hui");
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data)) {
+      throw new Error("Products JSON format galat hai");
+    }
+
+    products = data;
+    renderProducts();
+    saveCart();
+
+  } catch (error) {
+    console.error("Product loading error:", error);
+
+    if (productGrid) {
+      productGrid.innerHTML =
+        "<p>Products load nahi ho rahe. Please try again.</p>";
+    }
+  }
+}
+
+loadProducts();
 </script>
 </body></html>
